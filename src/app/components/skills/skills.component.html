@@ -1,0 +1,41 @@
+<section class="skills section" id="skills">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">// Compétences</span>
+      <h2>Mon arsenal tech</h2>
+      <p>Les technologies que j'utilise pour concevoir des applications web modernes et robustes.</p>
+    </div>
+
+    <!-- Filtre catégories -->
+    <div class="skills__filters" data-aos="fade-up" data-aos-delay="100">
+      @for (cat of categories; track cat) {
+        <button
+          class="filter-btn"
+          [class.active]="activeCategory === cat"
+          (click)="setCategory(cat)"
+        >{{ cat }}</button>
+      }
+    </div>
+
+    <!-- Grille de compétences -->
+    <div class="skills__grid">
+      @for (skill of filteredSkills; track skill.name; let i = $index) {
+        <div class="skill-card" data-aos="fade-up" [attr.data-aos-delay]="i * 60">
+          <div class="skill-card__header">
+            <div class="skill-card__icon-wrapper">
+              <img [src]="skill.icon" [alt]="skill.name" class="skill-card__icon" />
+            </div>
+            <div>
+              <h3 class="skill-card__name">{{ skill.name }}</h3>
+              <span class="skill-card__level-label">{{ getLevelLabel(skill.level) }}</span>
+            </div>
+            <span class="skill-card__percent">{{ skill.level }}%</span>
+          </div>
+          <div class="skill-card__bar">
+            <div class="skill-card__bar-fill" [style.width.%]="skill.level"></div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

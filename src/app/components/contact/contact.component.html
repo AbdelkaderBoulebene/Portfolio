@@ -1,0 +1,183 @@
+<section class="contact section" id="contact">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">// Contact</span>
+      <h2>Travaillons ensemble</h2>
+      <p>Vous avez un projet ou une opportunité ? N'hésitez pas à me contacter !</p>
+    </div>
+
+    <div class="contact__grid">
+
+      <!-- Infos gauche -->
+      <div class="contact__info" data-aos="fade-right" data-aos-duration="800">
+        <div class="contact__info-card">
+          <div class="contact__info-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Localisation</h4>
+            <p>Strasbourg, France</p>
+          </div>
+        </div>
+
+        <div class="contact__info-card">
+          <div class="contact__info-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:boulebene.abdelkaderpro@gmail.com">boulebene.abdelkaderpro&#64;gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contact__info-card">
+          <div class="contact__info-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Statut</h4>
+            <p class="status-available">
+              <span class="status-dot"></span>
+              Disponible pour opportunités
+            </p>
+          </div>
+        </div>
+
+        <!-- Social links -->
+        <div class="contact__socials">
+          <a
+            href="https://github.com/AbdelkaderBoulebene"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn"
+            title="GitHub"
+          >
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+            </svg>
+            GitHub
+          </a>
+          <a
+            href="mailto:boulebene.abdelkaderpro@gmail.com"
+            class="social-btn"
+            title="Email"
+          >
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Email
+          </a>
+        </div>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="contact__form-wrapper" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+        <form class="contact__form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div class="form__row">
+            <div class="form__group">
+              <label for="name">Nom / Société</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                [(ngModel)]="form.name"
+                placeholder="Votre nom ou société"
+                required
+                [disabled]="status === 'sending'"
+              />
+            </div>
+            <div class="form__group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                [(ngModel)]="form.email"
+                placeholder="votre@email.com"
+                required
+                [disabled]="status === 'sending'"
+              />
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label for="subject">Sujet</label>
+            <input
+              id="subject"
+              type="text"
+              name="subject"
+              [(ngModel)]="form.subject"
+              placeholder="Opportunité, projet, collaboration..."
+              required
+              [disabled]="status === 'sending'"
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              [(ngModel)]="form.message"
+              placeholder="Décrivez votre projet ou votre demande..."
+              rows="5"
+              required
+              [disabled]="status === 'sending'"
+            ></textarea>
+          </div>
+
+          <!-- Feedback -->
+          @if (status === 'success') {
+            <div class="form__feedback form__feedback--success">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Message envoyé avec succès ! Je vous répondrai rapidement.
+            </div>
+          }
+          @if (status === 'error') {
+            <div class="form__feedback form__feedback--error">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              Une erreur est survenue. Réessayez ou contactez-moi directement par email.
+            </div>
+          }
+
+          <button
+            type="submit"
+            class="btn btn--primary"
+            [disabled]="contactForm.invalid || status === 'sending'"
+            style="width: 100%; justify-content: center;"
+          >
+            @if (status === 'sending') {
+              <span class="spinner"></span>
+              Envoi en cours...
+            } @else {
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              Envoyer le message
+            }
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="contact__footer">
+    <p>© 2026 BOULEBENE Abdelkader — Fait avec <span class="heart">♥</span> en Angular</p>
+  </div>
+</section>
